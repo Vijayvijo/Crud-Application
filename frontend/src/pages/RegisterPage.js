@@ -13,7 +13,7 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', formData);
+      await axios.post('https://crud-application-7k9w.onrender.com/api/auth/register', formData);
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong');
