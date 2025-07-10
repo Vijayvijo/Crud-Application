@@ -51,13 +51,13 @@ A full-stack task management app built using:
 
 ## 📸 Screenshots
 
-![Login Page](frontend/public/screenshots/login.png)
+![Login Page](frontend/public/login.png)
 
 ### 🏠 Dashboard
-![Dashboard](frontend/public/screenshots/dashboard.png)
+![Dashboard](frontend/public/Dashboard.png)
 
 ### 🧾 Task Table
-![Tasks](frontend/public/screenshots/tasks.png)
+![Tasks](frontend/public/Register.png)
 
 ---
 
