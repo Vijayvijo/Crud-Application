@@ -101,7 +101,6 @@ const Dashboard = () => {
 
       <h2>Task Manager</h2>
 
-      {/* Task Form */}
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="row">
           <div className="col">
@@ -152,7 +151,6 @@ const Dashboard = () => {
         </div>
       </form>
 
-      {/* Filters & Pagination */}
       <div className="d-flex justify-content-between mb-3">
         <select
           onChange={(e) => setStatusFilter(e.target.value)}
@@ -181,7 +179,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Task Table */}
       <table className="table table-bordered">
         <thead>
           <tr>
