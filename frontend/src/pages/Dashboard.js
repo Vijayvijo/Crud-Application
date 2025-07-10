@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const API_BASE_URL = 'https://crud-application-7k9w.onrender.com';
+
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [formData, setFormData] = useState({
@@ -20,11 +22,12 @@ const Dashboard = () => {
   const fetchTasks = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/tasks?status=${statusFilter}&page=${page}`,
+        `${API_BASE_URL}/api/tasks?status=${statusFilter}&page=${page}`,
         { headers: { Authorization: token } }
       );
       setTasks(res.data.tasks);
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error('Error fetching tasks:', err.message);
       toast.error('Failed to load tasks');
     }
@@ -32,6 +35,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchTasks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statusFilter, page]);
 
   const handleChange = (e) => {
@@ -42,12 +46,12 @@ const Dashboard = () => {
     e.preventDefault();
     try {
       if (editingTaskId) {
-        await axios.put(`http://localhost:5000/api/tasks/${editingTaskId}`, formData, {
+        await axios.put(`${API_BASE_URL}/api/tasks/${editingTaskId}`, formData, {
           headers: { Authorization: token },
         });
         toast.success('Task updated!');
       } else {
-        await axios.post(`http://localhost:5000/api/tasks`, formData, {
+        await axios.post(`${API_BASE_URL}/api/tasks`, formData, {
           headers: { Authorization: token },
         });
         toast.success('Task added!');
@@ -57,6 +61,7 @@ const Dashboard = () => {
       setEditingTaskId(null);
       fetchTasks();
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error('Error submitting task:', err.message);
       toast.error('Failed to submit task');
     }
@@ -76,12 +81,13 @@ const Dashboard = () => {
     if (!window.confirm('Are you sure you want to delete this task?')) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+      await axios.delete(`${API_BASE_URL}/api/tasks/${id}`, {
         headers: { Authorization: token },
       });
       toast.success('Task deleted');
       fetchTasks();
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error('Error deleting task:', err.message);
       toast.error('Failed to delete task');
     }
